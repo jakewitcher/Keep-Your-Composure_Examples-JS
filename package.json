@@ -1,0 +1,15 @@
+{
+  "name": "keep-composure-examples",
+  "version": "1.0.0",
+  "description": "examples for Keep Your Composure articles series",
+  "main": "function-composure.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jake Witcher",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "^0.26.1",
+    "ramda-fantasy": "^0.8.0"
+  }
+}
