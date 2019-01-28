@@ -71,37 +71,37 @@ const finalNumber = secondAndThirdNumbers(8);
 console.log(finalNumber); // 20
 
 // example 4
-// const transaction = {
-//   customer: "Sam Winchester",
-//   promoCode: "promo30",
-//   items: [
-//     { name: "50 lb. bag of salt", price: 20 },
-//     { name: "plaid shirt", price: 35 },
-//     { name: "Kansas: Greatest Hits", price: 15 }
-//   ]
-// };
+const transaction = {
+  customer: "Sam Winchester",
+  promoCode: "promo30",
+  items: [
+    { name: "50 lb. bag of salt", price: 20 },
+    { name: "plaid shirt", price: 35 },
+    { name: "Kansas: Greatest Hits", price: 15 }
+  ]
+};
 
-// getPrices = item => item.price;
-// promo30 = price => price - price * 0.3;
-// salesTax = price => price + price * 0.065;
-// shipping = price => price + 8.99;
-// format = price => price.toFixed(2);
-// sumTotal = (total, current) => current + total;
-// message = price => `Your total is $${price}`;
+getPrices = item => item.price;
+promo30 = price => price - price * 0.3;
+salesTax = price => price + price * 0.065;
+shipping = price => price + 8.99;
+format = price => price.toFixed(2);
+sumTotal = (total, current) => current + total;
+message = price => `Your total is $${price}`;
 
-// printTotal = R.compose(
-//   message,
-//   format,
-//   shipping,
-//   R.reduce(sumTotal, 0),
-//   R.map(salesTax),
-//   R.map(promo30),
-//   R.map(getPrices)
-// );
+printTotal = R.compose(
+  message,
+  format,
+  shipping,
+  R.reduce(sumTotal, 0),
+  R.map(salesTax),
+  R.map(promo30),
+  R.map(getPrices)
+);
 
-// result = printTotal(transaction.items);
+result = printTotal(transaction.items);
 
-// console.log(result);
+console.log(result);
 
 // example 5
 const map = (fn, array) => array.map(fn);
