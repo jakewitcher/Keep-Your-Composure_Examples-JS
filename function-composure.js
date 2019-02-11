@@ -24,21 +24,24 @@ const doSomeMath1 = R.compose(
 const doSomeMath2 = x => msg(addTwo(multiplyThree(x)));
 
 // example 3
-arr = [1, 2, 3, 4, 5, 6];
-sum = arr.reduce((accumulator, current) => accumulator + current);
+const arr = [1, 2, 3, 4, 5, 6];
+const sum = arr.reduce((accumulator, current) => accumulator + current);
 console.log(sum);
 
 // example 4
-arr2D2 = [2, 4, 6, 8, 10];
-sumPlusTen = arr2D2.reduce((accumulator, current) => accumulator + current, 10);
+const arr2D2 = [2, 4, 6, 8, 10];
+const sumPlusTen = arr2D2.reduce(
+  (accumulator, current) => accumulator + current,
+  10
+);
 console.log(sumPlusTen);
 
 // example 5
-compose = (...fns) => {
+const compose = (...fns) => {
   return arg => fns.reduceRight((value, fn) => fn(value), arg);
 };
 
-numPlusTwo = compose(
+const numPlusTwo = compose(
   msg,
   addTwo
 );
@@ -46,13 +49,13 @@ numPlusTwo = compose(
 console.log(numPlusTwo(7));
 
 // example 6
-composePlus = (...fns) => {
+const composePlus = (...fns) => {
   return (...args) => fns.reduceRight((value, fn) => [fn(...value)], args)[0];
 };
 
 const add = (x, y) => x + y;
 
-sumPlusTwo = composePlus(msg, addTwo, add);
+const sumPlusTwo = composePlus(msg, addTwo, add);
 
 console.log(sumPlusTwo(4, 5));
 
@@ -64,13 +67,13 @@ const transaction = {
   price: 20
 };
 
-promo30 = price => price - price * 0.3;
-salesTax = price => price + price * 0.065;
-shipping = price => price + 8.99;
-format = price => price.toFixed(2);
-message = price => `Your total is $${price}`;
+const promo30 = price => price - price * 0.3;
+const salesTax = price => price + price * 0.065;
+const shipping = price => price + 8.99;
+const format = price => price.toFixed(2);
+const message = price => `Your total is $${price}`;
 
-total = R.compose(
+const total = R.compose(
   message,
   format,
   shipping,
@@ -78,7 +81,7 @@ total = R.compose(
   promo30
 );
 
-result = total(transaction.price);
+const result = total(transaction.price);
 
 console.log(result);
 
@@ -90,14 +93,14 @@ const transaction2 = {
   price: 35
 };
 
-promo20 = price => price - price * 0.2;
-promo10 = price => price - price * 0.1;
-salesTax2 = price => price + price * 0.065;
-shipping2 = price => price + 8.99;
-format2 = price => price.toFixed(2);
-message2 = price => `Your total is $${price}`;
+const promo20 = price => price - price * 0.2;
+const promo10 = price => price - price * 0.1;
+const salesTax2 = price => price + price * 0.065;
+const shipping2 = price => price + 8.99;
+const format2 = price => price.toFixed(2);
+const message2 = price => `Your total is $${price}`;
 
-checkPromo = transaction => {
+const checkPromo = transaction => {
   switch (transaction.promoCode) {
     case "promo10":
       return promo10;
@@ -106,9 +109,9 @@ checkPromo = transaction => {
   }
 };
 
-promo = checkPromo(transaction2);
+const promo = checkPromo(transaction2);
 
-total2 = R.compose(
+const total2 = R.compose(
   message2,
   format2,
   shipping2,
@@ -116,6 +119,6 @@ total2 = R.compose(
   promo
 );
 
-result2 = total2(transaction2.price);
+const result2 = total2(transaction2.price);
 
 console.log(result2);

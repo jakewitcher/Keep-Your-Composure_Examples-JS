@@ -81,15 +81,15 @@ const transaction = {
   ]
 };
 
-getPrices = item => item.price;
-promo30 = price => price - price * 0.3;
-salesTax = price => price + price * 0.065;
-shipping = price => price + 8.99;
-format = price => price.toFixed(2);
-sumTotal = (total, current) => current + total;
-message = price => `Your total is $${price}`;
+const getPrices = item => item.price;
+const promo30 = price => price - price * 0.3;
+const salesTax = price => price + price * 0.065;
+const shipping = price => price + 8.99;
+const format = price => price.toFixed(2);
+const sumTotal = (total, current) => current + total;
+const message = price => `Your total is $${price}`;
 
-printTotal = R.compose(
+const printTotal = R.compose(
   message,
   format,
   shipping,
@@ -99,7 +99,7 @@ printTotal = R.compose(
   R.map(getPrices)
 );
 
-result = printTotal(transaction.items);
+const result = printTotal(transaction.items);
 
 console.log(result);
 
@@ -107,7 +107,7 @@ console.log(result);
 const map = (fn, array) => array.map(fn);
 const curryMap = curry(map);
 
-plusThree = curryMap(a => a + 3);
+const plusThree = curryMap(a => a + 3);
 console.log(plusThree([1, 2, 3])); // [4, 5, 6]
 
 // example 6
@@ -121,13 +121,13 @@ const transaction2 = {
   ]
 };
 
-getPrices2 = item => item.price;
-promo20 = price => price - price * 0.2;
-salesTax2 = price => price + price * 0.065;
-shipping2 = price => price + 8.99;
-format2 = price => price.toFixed(2);
-sumTotal2 = (total, current) => current + total;
-message2 = price => `Your total is $${price}`;
+const getPrices2 = item => item.price;
+const promo20 = price => price - price * 0.2;
+const salesTax2 = price => price + price * 0.065;
+const shipping2 = price => price + 8.99;
+const format2 = price => price.toFixed(2);
+const sumTotal2 = (total, current) => current + total;
+const message2 = price => `Your total is $${price}`;
 
 const transformPrices = R.compose(
   salesTax2,
@@ -135,7 +135,7 @@ const transformPrices = R.compose(
   getPrices2
 );
 
-printTotal2 = R.compose(
+const printTotal2 = R.compose(
   message2,
   format2,
   shipping2,
@@ -143,20 +143,20 @@ printTotal2 = R.compose(
   R.map(transformPrices)
 );
 
-result2 = printTotal2(transaction2.items);
+const result2 = printTotal2(transaction2.items);
 
 console.log(result2);
 
 // exmaple 7
-add1 = x => x + 1;
-multiply2 = x => x * 2;
+const add1 = x => x + 1;
+const multiply2 = x => x * 2;
 
-versionOne = R.compose(
+const versionOne = R.compose(
   R.map(add1),
   R.map(multiply2)
 );
 
-versionTwo = R.map(
+const versionTwo = R.map(
   R.compose(
     add1,
     multiply2
