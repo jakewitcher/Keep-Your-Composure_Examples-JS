@@ -43,15 +43,11 @@ class MaybeNumber {
   }
 
   get isNumber() {
-    return (
-      this.value === null ||
-      this.value === undefined ||
-      typeof this.value !== "number"
-    );
+    return typeof this.value === "number";
   }
 
   map(f) {
-    return this.isNumber ? Nothing.of() : JustNumber.of(f(this.value));
+    return this.isNumber ? JustNumber.of(f(this.value)) : Nothing.of();
   }
 
   inspect() {
