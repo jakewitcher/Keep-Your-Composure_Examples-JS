@@ -126,14 +126,18 @@ const format2 = price => price.toFixed(2);
 const message2 = price => `Your total is $${price}`;
 
 const total2 = R.compose(
-  message2,
-  format2,
   shipping2,
   salesTax2,
   promo30_2
 );
 
+const createMessage = R.compose(
+  message2,
+  format2
+);
+
 const handleTransaction = R.compose(
+  R.map(createMessage),
   R.map(total2),
   MaybeNumber.of
 );
